@@ -1,0 +1,38 @@
+import csv
+import datetime
+
+welcome = """
+Hello. I\'m here to remind you that you are your best friend.
+You know yourself and you know what you need.
+You might have forgotten.
+Let me remind you.
+"""
+good = ["fine"]
+bad = []
+
+time = datetime.datetime.now()
+
+def sympathy(utterance):
+    if utterance.lower() in good:
+        print("Glad to hear that.")
+    if utterance in bad:
+        print("Sorry to hear that.")
+    x = None
+
+def remember(file, rate):
+    file_name = file + ".csv"
+    with open(file_name, "a+") as file:
+      file.write("\n" + str(time))
+      file.write("," + str(x))
+    file.close
+    return x
+    
+print(welcome)
+
+x = input("How are you today? ")
+sympathy(x)
+x = input("Can you rate your mood from 0(unbearable) to 10(amazing)? ")
+remember("moods", x)
+
+if int(x)<5:
+    None
