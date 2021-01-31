@@ -7,15 +7,18 @@ You know yourself and you know what you need.
 You might have forgotten.
 Let me remind you.
 """
-good = ["fine"]
-bad = []
+
+good = ["fine", "great", "good"]
+bad = ["bad", "not good", "horrible"]
+
+waht_helps = ["go out during sunlight", "exercise, walk or meditate", "talk to a loved one"]
 
 time = datetime.datetime.now()
 
 def sympathy(utterance):
     if utterance.lower() in good:
         print("Glad to hear that.")
-    if utterance in bad:
+    if utterance.lower() in bad:
         print("Sorry to hear that.")
     x = None
 
