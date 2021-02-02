@@ -1,5 +1,6 @@
 import csv
 import datetime
+import matplotlib.pyplot as plt
 
 welcome = """
 Hello. I\'m here to remind you that you are your best friend.
@@ -11,7 +12,7 @@ Let me remind you.
 good = ["fine", "great", "good"]
 bad = ["bad", "not good", "horrible"]
 
-waht_helps = ["go out during sunlight", "exercise, walk or meditate", "talk to a loved one"]
+what_helps = ["go out during sunlight", "exercise, walk or meditate", "talk to a loved one"]
 
 time = datetime.datetime.now()
 
@@ -25,8 +26,7 @@ def sympathy(utterance):
 def remember(file, rate):
     file_name = file + ".csv"
     with open(file_name, "a+") as file:
-      file.write("\n" + str(time))
-      file.write("," + str(x))
+      file.write(str(time) + "," + str(x) + "\n")
     file.close
     return x
     
@@ -34,8 +34,20 @@ print(welcome)
 
 x = input("How are you today? ")
 sympathy(x)
+
 x = input("Can you rate your mood from 0(unbearable) to 10(amazing)? ")
 remember("moods", x)
-
-if int(x)<5:
+if int(x)<=5:
+    # suggest smth from what_helps list
     None
+else:
+    # ask what help -> create new list, remember to csv
+    None
+
+with open("moods.csv", "r") as moods:
+    reader = csv.reader(moods)
+    moods_line = [row[1] for row in reader]
+    time_line = [row[0] for row in reader]
+    print(moods_line)
+    print(time_line)
+        
