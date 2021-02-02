@@ -9,7 +9,7 @@ You might have forgotten.
 Let me remind you.
 """
 
-good = ["fine", "great", "good"]
+good = ["fine", "great", "good", "ok"]
 bad = ["bad", "not good", "horrible"]
 
 what_helps = ["go out during sunlight", "exercise, walk or meditate", "talk to a loved one"]
@@ -44,10 +44,15 @@ else:
     # ask what help -> create new list, remember to csv
     None
 
+moods_line = []
+times_line = []
+with open("moods.csv", "r") as moods:
+    reader = csv.reader(moods)
+    times_line = [row[0] for row in reader]
 with open("moods.csv", "r") as moods:
     reader = csv.reader(moods)
     moods_line = [row[1] for row in reader]
-    time_line = [row[0] for row in reader]
-    print(moods_line)
-    print(time_line)
+print(times_line, moods_line)
+
+plt.plot(times_line, moods_line)
         
