@@ -48,11 +48,13 @@ moods_line = []
 times_line = []
 with open("moods.csv", "r") as moods:
     reader = csv.reader(moods)
-    times_line = [row[0] for row in reader]
+    times_line = [row[0][:10] for row in reader]
 with open("moods.csv", "r") as moods:
     reader = csv.reader(moods)
     moods_line = [row[1] for row in reader]
+
 print(times_line, moods_line)
+moods_line.sort()
 
 plt.plot(times_line, moods_line)
         
